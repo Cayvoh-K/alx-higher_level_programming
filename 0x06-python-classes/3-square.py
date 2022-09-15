@@ -3,18 +3,17 @@
 
 
 class Square:
-    """Create a Square.
-    size (no type/value verification)
-    atributes:
-    size: private instance.
-    """
+    """Class - Square"""
 
     def __init__(self, size=0):
-        self.__size = size
-        if type(size) != int:
-            raise TypeError("size must be an integer")
-        elif size < 0:
-            raise ValueError("size must be >= 0")
+        """Constructor of a Square with the size"""
+        if (type(size) is not int):
+            raise TypeError("size must be an integer"))
+        elif (size < 0):
+            raise (ValueError("size must be >= 0"))
+        else:
+            self.__size = size
 
         def area(self):
-            return self.__size * self.__size
+            """Method to get the area of the Square"""
+            return (self.__size ** 2)
