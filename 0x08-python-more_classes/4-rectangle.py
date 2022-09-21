@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/python
 """
 Defines a class Rectangle
 """
@@ -56,3 +56,7 @@ class Rectangle:
             string += "\n".join("#" * self.__width
                                 for j in range(self.__height))
         return string
+
+    def __repr__(self):
+        """returns a string represemtation of the rectangle for reproduction"""
+        return "Rectangle({:d}, {:d})".format(self.__width, self.__height)
