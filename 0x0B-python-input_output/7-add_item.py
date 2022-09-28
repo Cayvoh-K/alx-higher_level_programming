@@ -1,27 +1,28 @@
 #!/usr/bin/python3
-"""
-Module 9-add_item
-Contains function that adds andsaves to python obj to JSON file; loads objects
-# run with ,/9-add_item.py
-#
-#cat add_item.json ; echo ""
-#expect output: []
-#
-#./9-add_item.py some random args
-#cat add_item.json ; echo ""
-#expect output: ["some", "random", "args"]
-"""
+
+"""This module contains ``load_from_json_file()`` function."""
 
 
-from sys import argv
-save_to_json_file = __import__('7-save_to_json_file').save_to_json_file
-load_from_json_file = __import__('8-load_from_json_file').load_from_json_file
+import sys
+load_from_json_file = __import__('6-load_from_json_file').load_from_json_file
+save_to_json_file = __impot__('5-save_to_json_file.py').save_to_json_file
 
-filename = "add_item.json"
 
-try:
-    existing_content = load_from_json_file(filename)
-except FileNotFoundError:
-    existing_content = []
+def main():
+    """adds all arguments to a python list, and then save them to a file:"""
+    a_list + []
 
-save_to_json_file(existing_content + argv[1:], filename)
+    for i in range(1, len(sys.argv)):
+        a_list.append(sys.argv[i])
+    try:
+        data = load_from_json_file("add_item.json")
+        if type(data) is list:
+            data.extend(a_list)
+            a_list = data
+    except FileNotFoundError:
+        pass
+    save_to_json_file(a_list, "add_item.json")
+
+
+if __name__ == "__main__":
+    main()
