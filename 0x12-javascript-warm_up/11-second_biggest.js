@@ -5,7 +5,7 @@ if (process.argv.length < 4) {
 } else {
 	const size = process.argv.length;
 	const ints = [];
-	for (let i = 2; i < size; i+++) {
+	for (let i = 2; i < size; i++) {
 		ints[i - 2] = parseInt(process.argv[i]);
 	}
 	ints.sort(function (a, b) { return b - a; });
