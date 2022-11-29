@@ -1,7 +1,7 @@
 #!/usr/bin/node
 
 const SquareB = require('./5-square');
-module.exports = class Square extends Squares {
+module.exports = class Square extends SquareB {
   charPrint (c) {
     if (c === undefined) {
       c = 'X';
