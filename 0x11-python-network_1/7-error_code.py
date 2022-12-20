@@ -5,7 +5,7 @@ sends a request to the URL
 displays the body of the response
 """
 import sys
-import response
+import requests
 
 
 if __name__ == "__main__":
