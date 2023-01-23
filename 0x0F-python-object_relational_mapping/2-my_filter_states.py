@@ -9,7 +9,7 @@ import MySQLdb
 
 if __name__ == '__main__':
     user, password, database, state = argv[1], argv[2], argv[3], argv[4]
-    db = MySQLdb.coonnect(host="localhost",
+    db = MySQLdb.connect(host="localhost",
                           user=user, passwd=password, db=database)
     db = db.cursor()
     db.execute("""SELECT * FROM states
