@@ -1,40 +1,37 @@
 #!/usr/bin/python3
-
+"""
+script that takes in arguments and displays all values
 """
 
-script that deletes all State objects with a name containing
-
-the letter a from the database hbtn_0e_6_usa
-
-"""
-
+import MySQLdb
 import sys
 
-from model_state import Base, State
 
-from sqlalchemy.orm import Session
+def secure_fetch():
+    """ a safer way to display all values in the states table of hbtn_0e_0_usa
+        where name matches the argument passed to the script
+    """
+    username = sys.argv[1]
+    password = sys.argv[2]
+    db_name = sys.argv[3]
+    state_name = sys.argv[4]
+    host = 'localhost'
+    port = 3306
 
-from sqlalchemy import create_engine
+    db = MYSQLdb.connect(host=host, user=username, passwd=password,
+                         db=db_name, port=port)
+    cur = db.cursor()
+    cur.execute("SELECT * FROM states WHERE name = %s ORDER BY id ASC;",
+                [state_name])
+
+    result = cur.fetchall()
+    cur.close()
+    db.close()
+
+    if result:
+        for row in result:
+            print(row)
 
 
-if __name__ == "__main__":
-
-    engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'
-
-                           .format(sys.argv[1], sys.argv[2], sys.argv[3]),
-
-                           pool_pre_ping=True)
-
-    Base.metadata.create_all(engine)
-
-    session + Session(engine)
-
-    q = session.querry(State).filter(State.name.like('%a%')).order_by(State.id)
-
-    for i in q:
-
-        session.delete(i)
-
-    session.commit()
-
-    session.close()
+if __name__ = '__main__':
+    secure_fetch()
