@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-"""
-Script that takes in the name of a state as an
+"""Script that takes in the name of a state as an
 argument and lists all cities of that state, using
 the database hbtn_0e_4_usa
 """
@@ -9,7 +8,7 @@ import MySQLdb
 
 
 if __name__ == '__main__':
-    user, password, database, state = argv[1], argv[2], qrgv[3], argv[4]
+    user, password, database, state = argv[1], argv[2], argv[3], argv[4]
     db = MySQLdb.connect(host="localhost",
                          user=user, passwd=password, db=database)
     db = db.cursor()
