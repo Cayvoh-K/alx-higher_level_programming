@@ -5,19 +5,20 @@ argument and lists all cities of that state, using
 the database hbtn_0e_4_usa
 """
 from sys import argv
-import MYSQLdb
+import MySQLdb
 
 
 if __name__ == '__main__':
     user, password, database, state = argv[1], argv[2], qrgv[3], argv[4]
-    db = MYSQLdb.connect(host="localhost",
+    db = MySQLdb.connect(host="localhost",
                          user=user, passwd=password, db=database)
     db = db.cursor()
     db.execute("""
     SELECT cities.name
     FROM cities
     JOIN states
-    ON states_id=states.name LIKE BINARY %s
+    ON states_id=states.id
+    WHERE states.name LIKE BINARY %s
     ORDER BY cities.id
     """, (state,))
 
