@@ -1,16 +1,14 @@
 #!/usr/bin/python3
-"""
-script that takes in arguments and displays all values
-"""
+'''script for task 3'''
 
 import MySQLdb
 import sys
 
 
 def secure_fetch():
-    """ a safer way to display all values in the states table of hbtn_0e_0_usa
+    ''' a safer way to displays all values in the states table of hbtn_0e_0_usa
         where name matches the argument passed to the script
-    """
+    '''
     username = sys.argv[1]
     password = sys.argv[2]
     db_name = sys.argv[3]
@@ -18,7 +16,7 @@ def secure_fetch():
     host = 'localhost'
     port = 3306
 
-    db = MYSQLdb.connect(host=host, user=username, passwd=password,
+    db = MySQLdb.connect(host=host, user=username, passwd=password,
                          db=db_name, port=port)
     cur = db.cursor()
     cur.execute("SELECT * FROM states WHERE name = %s ORDER BY id ASC;",
@@ -33,5 +31,5 @@ def secure_fetch():
             print(row)
 
 
-if __name__ = '__main__':
+if __name__ == '__main__':
     secure_fetch()
