@@ -1,16 +1,23 @@
 #!/usr/bin/python3
 """
-Contains the class BaseGeometry and subclass Rectangle
+Contains definition of class Reactangle that inherits from BaseGeometry.
 """
 
 BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
 
 class Rectangle(BaseGeometry):
-    """A representation of a rectangle"""
+    """Defnifition of class Rectangle that inherits from BaseGeometry.
+       Attributes:
+            width (int): width of the rectangle.
+            height (int) height of the rectangle.
+    """
+
     def __init__(self, width, height):
-        """instantiation of the rectangle"""
+        """Initializes an instance of class Rectangle"""
+
         self.integer_validator("width", width)
-        self.__width = width
         self.integer_validator("height", height)
+
+        self.__width = width
         self.__height = height
