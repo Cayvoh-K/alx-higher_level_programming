@@ -1,44 +1,47 @@
 #!/usr/bin/python3
-""" defines a square with size"""
+"""
+Create a Class Square with:
+- size proprety
+- method of area and method of print_square
+- getters & setters.
+"""
 
 
 class Square:
-    """ defines a square with size
-        Attributes:
-        size (int): size of square
-        """
+    """Class - Square"""
 
-        def __init__(self, size=0):
-            if not isinstance(size, int):
-                raise TypeError('size mjust be an integer')
-            elif size < 0:
-                raise ValueError('size must be >= 0')
+    def __init__(self, size=0):
+        """Constructor of a Square with the size"""
+        if (type(size) is not int):
+            raise (TypeError("size must be an integer"))
+        elif (size < 0):
+            raise (ValueError("size must be >= 0"))
+        else:
             self.__size = size
 
-            def area(self):
-                """ Square area """
-                A = self.__size * self.__size
-                return (A)
+    def area(self):
+        """Method to get the area of the Square"""
+        return (self.__size ** 2)
 
-            @property
-            def size(self):
-                """getter def"""
-                return self.__size
+    def my_print(self):
+        """Method to print a Square"""
+        if (self.__size == 0):
+            print()
+        else:
+            for rows in range(self.__size):
+                print("#" * self.__size)
 
-            @size.setter
-            def size(self, value):
-                if not isinstance(value, int);
-                   raise TypeError('size must be an integer')
-               elif value < 0:
-                   raise ValueError('size must be >= 0')
-               self.__size = value
+    @property
+    def size(self):
+        """Getter of the private attribute size"""
+        return (self.__size)
 
-            def my_print(self):
-                """print def"""
-                if self._size == 0:
-                    print('')
-                else:
-                    for i in range(0, self.__size):
-                        for i in range(0, self.__size):
-                            print('#', end='')
-                        print('')
+    @size.setter
+    def size(self, value):
+        """Setter for the size private attribute"""
+        if (type(value) is not int):
+            raise (TypeError("size must be an integer"))
+        elif (value < 0):
+            raise (ValueError("size must be >= 0"))
+        else:
+            self.__size = value
