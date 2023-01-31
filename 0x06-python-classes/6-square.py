@@ -1,109 +1,62 @@
 #!/usr/bin/python3
-
-"""create an empty class called Square"""
-
-
-
+"""
+Create a Class Square with:
+- size, position private propreties
+- method of area and method of print_square
+- getters & setters.
+"""
 
 
 class Square:
+    """Class - Square"""
 
-        """create a square.
+    def __init__(self, size=0, position=(0, 0)):
+        """Constructor of a Square with the size and position"""
+        self.size = size
+        self.position = position
 
-            size (no type/value verification)
+    def area(self):
+        """Method to get the area of the Square"""
+        return (self.__size ** 2)
 
-                atributes:
+    def my_print(self):
+        """Method to print a Square with spaces"""
+        if (self.__size == 0):
+            print()
+        else:
+            for blank in range(self.position[1]):
+                print()
+            for rows in range(self.__size):
+                print(" " * self.position[0], end='')
+                print("#" * self.__size)
 
-                    size: private instance.
+    @property
+    def size(self):
+        """Getter of the private attribute size"""
+        return (self.__size)
 
-                        """
+    @size.setter
+    def size(self, value):
+        """Setter for the size private attribute"""
+        if (type(value) is not int):
+            raise (TypeError("size must be an integer"))
+        elif (value < 0):
+            raise (ValueError("size must be >= 0"))
+        else:
+            self.__size = value
 
+    @property
+    def position(self):
+        """Getter of Position"""
+        return (self.__position)
 
-
-                            def __init__(self, size=0, position=(0, 0)):
-
-                                        self.size = size
-
-                                                self.position = position
-
-
-
-                                                    def area(self):
-
-                                                                return self.__size * self.__size
-
-
-
-                                                                @property
-
-                                                                    def size(self):
-
-                                                                                return self.__size
-
-
-
-                                                                                @size.setter
-
-                                                                                    def size(self, value):
-
-                                                                                                if type(value) != int:
-
-                                                                                                                raise TypeError("size must be an integer")
-
-                                                                                                                    elif value < 0:
-
-                                                                                                                                    raise ValueError("size must be >= 0")
-
-                                                                                                                                        else:
-
-                                                                                                                                                        self.__size = value
-
-
-
-                                                                                                                                                            @property
-
-                                                                                                                                                                def position(self):
-
-                                                                                                                                                                            return self.__position
-
-
-
-                                                                                                                                                                            @position.setter
-
-                                                                                                                                                                                def position(self, value):
-
-                                                                                                                                                                                            if (type(value) != tuple or len(value) != 2 or
-
-                                                                                                                                                                                                                    value[0] < 0 or type(value[0]) != int or
-
-                                                                                                                                                                                                                                    type(value[1]) != int or value[1] < 0):
-
-                                                                                                                                                                                                            raise TypeError("position must be a tuple of 2 positive integers")
-
-                                                                                                                                                                                                                self.__position = value
-
-
-
-                                                                                                                                                                                                                    def my_print(self):
-
-                                                                                                                                                                                                                                if self.__size == 0:
-
-                                                                                                                                                                                                                                                print()
-
-                                                                                                                                                                                                                                                            return
-
-                                                                                                                                                                                                                                                                for y in range(self.__position[1]):
-
-                                                                                                                                                                                                                                                                                print()
-
-                                                                                                                                                                                                                                                                                        for h in range(self.__size):
-
-                                                                                                                                                                                                                                                                                                        for p in range(self.__position[0]):
-
-                                                                                                                                                                                                                                                                                                                            print(" ", end="")
-
-                                                                                                                                                                                                                                                                                                                                        for w in range(self.__size - 1):
-
-                                                                                                                                                                                                                                                                                                                                                            print('#', end="")
-
-                                                                                                    print('#')
+    @position.setter
+    def position(self, value):
+        """Setter of position"""
+        if (len(value) != 2) or (type(value) is not tuple) \
+                or (type(value[0]) is not int) \
+                or (type(value[1]) is not int) \
+                or (value[0] < 0) or (value[1] < 0):
+            raise TypeError("position must be a tuple of 2 positive integers")
+        else:
+            self.__position = value
